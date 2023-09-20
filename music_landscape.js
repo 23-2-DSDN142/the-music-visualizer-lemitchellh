@@ -26,7 +26,7 @@ function draw_one_frame(words, vocal, drum, bass, other,counter) {
 
 
   let drumSize = map(drum, 30, 100, 30, 300, true);
-  fill(90,61,43); // brown
+  fill(90,61,243); // brown
   rect(0, 0, drumSize, drumSize);
   rect(width, 0, -drumSize, drumSize);
   rect(0, height, drumSize, -drumSize);
