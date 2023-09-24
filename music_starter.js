@@ -1,18 +1,58 @@
 
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
-  background(30)
-  textFont('Helvetica'); // please use CSS safe fonts
+  background(2, bass/1, bass/1.2)
+  textFont('Comic Sans'); // please use CSS safe fonts
   rectMode(CENTER)
   textSize(44);
 
- fill(250-vocal, 200-vocal, 150+vocal,10*vocal) 
-stroke(vocal, bass, drum)
- strokeWeight(10);
-//ellipse(width/2, height/2.5, 150+vocal)
+  var basscolor = map(bass, 0, 255, 190, 240)
 
+
+  let middlewidth = 690
+  let middleheight = 360
+
+  
+
+stroke(vocal, basscolor, 50+basscolor)
+ strokeWeight(6);
+ fill(50, 5+basscolor, 15+basscolor)
+//  line(middlewidth, middleheight, middlewidth, middleheight-drum*2)
+//  line(middlewidth-20, middleheight, middlewidth - 20, middleheight-drum*1.8)
+//  line(middlewidth+20, middleheight, middlewidth + 20, middleheight-drum*1.8)
+//  line(middlewidth+40, middleheight, middlewidth + 40, middleheight-drum*1.6)
+//  line(middlewidth-40, middleheight, middlewidth - 40, middleheight-drum*1.6)
+rectMode(CORNER)
+ rect(middlewidth, middleheight, 18, -2.6*drum)
+ rect(middlewidth-35, middleheight, 18, -2.4*drum)
+ rect(middlewidth-70, middleheight, 18, -2.2*drum)
+ rect(middlewidth-105, middleheight, 18, -2.0*drum)
+ rect(middlewidth-140, middleheight, 18, -1.8*drum)
+ rect(middlewidth-175, middleheight, 18, -1.6*drum)
+ rect(middlewidth-210, middleheight, 18, -1.4*drum)
+ rect(middlewidth-245, middleheight, 18, -1.2*drum)
+ rect(middlewidth-280, middleheight, 18, -1.0*drum)
+ rect(middlewidth-315, middleheight, 18, -.8*drum)
+ rect(middlewidth-350, middleheight, 18, -.6*drum)
+ rect(middlewidth-385, middleheight, 18, -.4*drum)
+ rect(middlewidth-420, middleheight, 18, -.2*drum)
+ rect(middlewidth-455, middleheight, 18, -.1*drum)
+ rect(middlewidth+35, middleheight, 18, -2.4*drum)
+ rect(middlewidth+70, middleheight, 18, -2.2*drum)
+ rect(middlewidth+105, middleheight, 18, -2.0*drum)
+
+ rect(middlewidth+140, middleheight, 18, -1.8*drum)
+ rect(middlewidth+175, middleheight, 18, -1.6*drum)
+ rect(middlewidth+210, middleheight, 18, -1.4*drum)
+ rect(middlewidth+245, middleheight, 18, -1.2*drum)
+ rect(middlewidth+280, middleheight, 18, -1.0*drum)
+ rect(middlewidth+315, middleheight, 18, -.8*drum)
+ rect(middlewidth+350, middleheight, 18, -.6*drum)
+ rect(middlewidth+385, middleheight, 18, -.4*drum)
+ rect(middlewidth+420, middleheight, 18, -.2*drum)
+ rect(middlewidth+455, middleheight, 18, -0.1*drum)
 //rect(vocal*.2, height/2.5, drum*10, 60)
-line(width*10, height*2, width*4, height/4)
+
 
 //  let bar_spacing = height / 10;
   //  let bar_height = width / 12;
