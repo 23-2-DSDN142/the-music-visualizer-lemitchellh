@@ -1,22 +1,25 @@
-
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
-function draw_one_frame(words, vocal, drum, bass, other, counter) {
-  background(2, bass/1, bass/1.2)
+function draw_one_frame(words, vocal, drum, bass, other, counter){ 
+  background(0, 10, bass/4)
   textFont('Comic Sans'); // please use CSS safe fonts
   rectMode(CENTER)
   textSize(44);
+  
 
   var basscolor = map(bass, 0, 255, 190, 240)
+  var drumcolor = map(drum, 0, 255, 150, 240)
 
+  
 
   let middlewidth = 690
   let middleheight = 360
 
+
   
 
-stroke(vocal, basscolor, 50+basscolor)
+stroke(vocal, drumcolor, 50+drumcolor)
  strokeWeight(6);
- fill(50, 5+basscolor, 15+basscolor)
+ fill(0, 20+drumcolor, 15+drumcolor)
 //  line(middlewidth, middleheight, middlewidth, middleheight-drum*2)
 //  line(middlewidth-20, middleheight, middlewidth - 20, middleheight-drum*1.8)
 //  line(middlewidth+20, middleheight, middlewidth + 20, middleheight-drum*1.8)
@@ -51,7 +54,6 @@ rectMode(CORNER)
  rect(middlewidth+385, middleheight, 18, -.4*drum)
  rect(middlewidth+420, middleheight, 18, -.2*drum)
  rect(middlewidth+455, middleheight, 18, -0.1*drum)
-//rect(vocal*.2, height/2.5, drum*10, 60)
 
 
 //  let bar_spacing = height / 10;
