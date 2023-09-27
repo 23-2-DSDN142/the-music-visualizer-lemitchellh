@@ -11,20 +11,48 @@ function draw_one_frame(words, vocal, drum, bass, other, counter){
 
   
 
-  let middlewidth = 690
-  let middleheight = 360
+  let middlewidth = width/2
+  let middleheight = height/2
 
 
   
 
-stroke(vocal, drumcolor, 50+drumcolor)
+stroke(100+vocal, drumcolor, 50+drumcolor)
+ strokeWeight(bass/10);
+
+ 
+push()
+ translate(width / 2, height / 2);
+      
+    //translate(p5.Vector(millis() / 2000, bass*2));
+    //scale(bass/100)     
+    
+    stroke (20, drumcolor, 100+drumcolor)
+    fill(0,0,0,0)
+    for (let i=0; i<50; i++){
+      ellipse(0,0, 2*bass+i, 2*bass+i)
+      ellipse(0,0, 5*bass+i, 5*bass+i)
+     }
+    
+    scale (bass/25)
+    ellipse(0,0, bass*1.5, bass*1.5)
+ //ellipse(width, height, bass*2, bass*2)
+ //ellipse(bass/2, bass/2, bass*3, bass*3)
+ pop()
+
+ stroke(vocal, drumcolor, 50+drumcolor, bass*3)
  strokeWeight(6);
+
  fill(0, 20+drumcolor, 15+drumcolor)
 //  line(middlewidth, middleheight, middlewidth, middleheight-drum*2)
 //  line(middlewidth-20, middleheight, middlewidth - 20, middleheight-drum*1.8)
 //  line(middlewidth+20, middleheight, middlewidth + 20, middleheight-drum*1.8)
 //  line(middlewidth+40, middleheight, middlewidth + 40, middleheight-drum*1.6)
 //  line(middlewidth-40, middleheight, middlewidth - 40, middleheight-drum*1.6)
+
+point (width/2, height/2)
+
+
 rectMode(CORNER)
  rect(middlewidth, middleheight, 18, -2.6*drum)
  rect(middlewidth-35, middleheight, 18, -2.4*drum)
@@ -56,7 +84,8 @@ rectMode(CORNER)
  rect(middlewidth+455, middleheight, 18, -0.1*drum)
 
 
-//  let bar_spacing = height / 10;
+
+ //  let bar_spacing = height / 10;
   //  let bar_height = width / 12;
   //  let bar_pos_x = width / 2;
  
