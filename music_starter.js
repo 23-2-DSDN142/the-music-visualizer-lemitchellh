@@ -29,13 +29,20 @@ push()
     
     stroke (20, drumcolor, 100+drumcolor)
     fill(0,0,0,0)
-    for (let i=0; i<50; i++){
-      ellipse(0,0, 2*bass+i, 2*bass+i)
+    for (let i=0; i<250; i=i+25){
+    if (i>126){
+      fill(20, 20, 20, 100);
+    }
+    else {
+      fill(50,0,0, 150);
+    }
+
+      //ellipse(0,0, 2*bass+i, 2*bass+i)
       ellipse(0,0, 5*bass+i, 5*bass+i)
      }
     
     scale (bass/25)
-    ellipse(0,0, bass*1.5, bass*1.5)
+    //ellipse(0,0, bass*1.5, bass*1.5)
  //ellipse(width, height, bass*2, bass*2)
  //ellipse(bass/2, bass/2, bass*3, bass*3)
  pop()
