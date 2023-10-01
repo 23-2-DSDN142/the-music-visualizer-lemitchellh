@@ -1,3 +1,5 @@
+let rotationOffset =0;
+
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter){ 
   background(0, 10, bass/4)
@@ -9,7 +11,12 @@ function draw_one_frame(words, vocal, drum, bass, other, counter){
   var basscolor = map(bass, 0, 255, 190, 240)
   var drumcolor = map(drum, 0, 255, 150, 240)
 
-  
+  var drumshe = map(drum, 0, 100, 0, 85)  
+  var basssize = map(bass, 0, 100, 20, 55)
+  var rotatespeed= map(bass, 0, 100, 7, 90)
+  var x = 30
+  var xx = x+30
+
 
   let middlewidth = width/2
   let middleheight = height/2
@@ -18,7 +25,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter){
   
 
 stroke(100+vocal, drumcolor, 50+drumcolor)
- strokeWeight(bass/10);
+ strokeWeight(bass/100);
 
  
 push()
@@ -29,28 +36,48 @@ push()
     
     stroke (20, drumcolor, 100+drumcolor)
     fill(0,0,0,0)
-    for (let i=0; i<250; i=i+25){
-    if (i>126){
-      fill(20, 20, 20, 100);
+    rotate(rotationOffset)
+    for (let i=0; i<200; i=i+5){
+    if (i>250){
+      fill(20, 20, 20, 200);
+      ellipse(i,i,3*basssize+i, 3*basssize+i)
+      //strokeWeight(i-basssize)
     }
     else {
-      fill(50,0,0, 150);
+      fill(50,110,i*20, 10);
+      //strokeWeight(10/i)
     }
 
       //ellipse(0,0, 2*bass+i, 2*bass+i)
-      ellipse(0,0, 5*bass+i, 5*bass+i)
-     }
+      rotate(-180)
+      ellipse(i,i, 5*basssize+i, 5*basssize+i)
+      //ellipse(i/4,i, 3*basssize+i, 3*basssize+i)
+      //ellipse(i,i/4, 3*basssize+i, 3*basssize+i)
+      rotate(-90)
+      ellipse(i,i, 5*basssize+i, 5*basssize+i)
+      //ellipse(i/4,i, 3*basssize+i, 3*basssize+i)
+      //ellipse(i,i/4, 3*basssize+i, 3*basssize+i)
+      // ellipse(i/4,i, 3*basssize+i, 3*basssize+i) 
+      // ellipse(i,i/4, 3*basssize+i, 3*basssize+i)
+      // rotate(i/90) 
+      // ellipse(i/4,i, 3*basssize+i, 3*basssize+i) 
+      // ellipse(i,i/4, 3*basssize+i, 3*basssize+i)
+      // rotate(i/180)
+    }
     
     scale (bass/25)
     //ellipse(0,0, bass*1.5, bass*1.5)
  //ellipse(width, height, bass*2, bass*2)
  //ellipse(bass/2, bass/2, bass*3, bass*3)
  pop()
+ rotationOffset += rotatespeed/4;
+
 
  stroke(vocal, drumcolor, 50+drumcolor, bass*3)
  strokeWeight(6);
+rectMode(CORNER)
 
- fill(0, 20+drumcolor, 15+drumcolor)
+ //fill(0, 20+drumcolor, 15+drumcolor)
 //  line(middlewidth, middleheight, middlewidth, middleheight-drum*2)
 //  line(middlewidth-20, middleheight, middlewidth - 20, middleheight-drum*1.8)
 //  line(middlewidth+20, middleheight, middlewidth + 20, middleheight-drum*1.8)
@@ -59,36 +86,48 @@ push()
 
 point (width/2, height/2)
 
+// for (let i=0; i<20; i=i+150){
+//   if (i>250){
+//      fill(i-drumcolor, i-drumcolor, i+drumcolor)
+//      //rect(width/2, height/2, 18, i-drum)
+//      rotate(i*drumshe,i)
+// }
+// rectMode(CORNER);
+// rect(width/2, height/2, 18, i-drum)
+// //rect(middlewidth, middleheight, 18, drumshe-i)
+// }
+
+
 
 rectMode(CORNER)
- rect(middlewidth, middleheight, 18, -2.6*drum)
- rect(middlewidth-35, middleheight, 18, -2.4*drum)
- rect(middlewidth-70, middleheight, 18, -2.2*drum)
- rect(middlewidth-105, middleheight, 18, -2.0*drum)
- rect(middlewidth-140, middleheight, 18, -1.8*drum)
- rect(middlewidth-175, middleheight, 18, -1.6*drum)
- rect(middlewidth-210, middleheight, 18, -1.4*drum)
- rect(middlewidth-245, middleheight, 18, -1.2*drum)
- rect(middlewidth-280, middleheight, 18, -1.0*drum)
- rect(middlewidth-315, middleheight, 18, -.8*drum)
- rect(middlewidth-350, middleheight, 18, -.6*drum)
- rect(middlewidth-385, middleheight, 18, -.4*drum)
- rect(middlewidth-420, middleheight, 18, -.2*drum)
- rect(middlewidth-455, middleheight, 18, -.1*drum)
- rect(middlewidth+35, middleheight, 18, -2.4*drum)
- rect(middlewidth+70, middleheight, 18, -2.2*drum)
- rect(middlewidth+105, middleheight, 18, -2.0*drum)
+//  rect(middlewidth, middleheight, 18, -2.6*drumshe)
+//  rect(middlewidth-35, middleheight, 18, -2.4*drumshe)
+//  rect(middlewidth-70, middleheight, 18, -2.2*drumshe)
+//  rect(middlewidth-105, middleheight, 18, -2.0*drumshe)
+//  rect(middlewidth-140, middleheight, 18, -1.8*drumshe)
+//  rect(middlewidth-175, middleheight, 18, -1.6*drumshe)
+//  rect(middlewidth-210, middleheight, 18, -1.4*drumshe)
+//  rect(middlewidth-245, middleheight, 18, -1.2*drumshe)
+//  rect(middlewidth-280, middleheight, 18, -1.0*drumshe)
+//  rect(middlewidth-315, middleheight, 18, -.8*drumshe)
+//  rect(middlewidth-350, middleheight, 18, -.6*drumshe)
+//  rect(middlewidth-385, middleheight, 18, -.4*drumshe)
+//  rect(middlewidth-420, middleheight, 18, -.2*drumshe)
+//  rect(middlewidth-455, middleheight, 18, -.1*drumshe)
+//  rect(middlewidth+35, middleheight, 18, -2.4*drumshe)
+//  rect(middlewidth+70, middleheight, 18, -2.2*drumshe)
+//  rect(middlewidth+105, middleheight, 18, -2.0*drumshe)
 
- rect(middlewidth+140, middleheight, 18, -1.8*drum)
- rect(middlewidth+175, middleheight, 18, -1.6*drum)
- rect(middlewidth+210, middleheight, 18, -1.4*drum)
- rect(middlewidth+245, middleheight, 18, -1.2*drum)
- rect(middlewidth+280, middleheight, 18, -1.0*drum)
- rect(middlewidth+315, middleheight, 18, -.8*drum)
- rect(middlewidth+350, middleheight, 18, -.6*drum)
- rect(middlewidth+385, middleheight, 18, -.4*drum)
- rect(middlewidth+420, middleheight, 18, -.2*drum)
- rect(middlewidth+455, middleheight, 18, -0.1*drum)
+//  rect(middlewidth+140, middleheight, 18, -1.8*drumshe)
+//  rect(middlewidth+175, middleheight, 18, -1.6*drumshe)
+//  rect(middlewidth+210, middleheight, 18, -1.4*drumshe)
+//  rect(middlewidth+245, middleheight, 18, -1.2*drumshe)
+//  rect(middlewidth+280, middleheight, 18, -1.0*drumshe)
+//  rect(middlewidth+315, middleheight, 18, -.8*drumshe)
+//  rect(middlewidth+350, middleheight, 18, -.6*drumshe)
+//  rect(middlewidth+385, middleheight, 18, -.4*drumshe)
+//  rect(middlewidth+420, middleheight, 18, -.2*drumshe)
+//  rect(middlewidth+455, middleheight, 18, -0.1*drumshe)
 
 
 
