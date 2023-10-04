@@ -12,14 +12,25 @@ function draw_one_frame(words, vocal, drum, bass, other, counter){
   var drumcolor = map(drum, 0, 255, 150, 240)
 
   var drumshe = map(drum, 0, 100, 0, 85)  
-  var basssize = map(bass, 0, 100, 20, 55)
-  var rotatespeed= map(bass, 0, 100, 7, 90)
-  var x = 30
-  var xx = x+30
-
-
+  var basssize = map(bass, 0, 100, 10, 45)
+  var rotatespeed= map(bass, 0, 100, 7, 35)
+  
   let middlewidth = width/2
   let middleheight = height/2
+
+if (bass>25){
+  strokeWeight(15)
+  fill(50,110,150,155)
+  ellipse(middlewidth,middleheight,basssize*7,basssize*7)
+  
+}
+
+
+ if (bass>50){
+   strokeWeight(50)
+   fill(50,110,150,155)
+  ellipse(middlewidth*bass,middleheight*bass,basssize*7,basssize*7)
+ }
 
 
   
@@ -37,8 +48,8 @@ push()
     stroke (20, drumcolor, 100+drumcolor)
     fill(0,0,0,0)
     rotate(rotationOffset)
-    for (let i=0; i<200; i=i+5){
-    if (i>250){
+    for (let i=0; i<100; i=i+2){
+    if (i>100){
       fill(20, 20, 20, 200);
       ellipse(i,i,3*basssize+i, 3*basssize+i)
       //strokeWeight(i-basssize)
@@ -50,27 +61,34 @@ push()
 
       //ellipse(0,0, 2*bass+i, 2*bass+i)
       rotate(-180)
-      ellipse(i,i, 5*basssize+i, 5*basssize+i)
+      //ellipse(i,i, 5*basssize+i, 5*basssize+i)
       ellipse(i/4,i, 3*basssize+i, 3*basssize+i)
       ellipse(i,i/4, 3*basssize+i, 3*basssize+i)
-      rotate(-90)
-      ellipse(i/2,i*2, 5*basssize+i, 5*basssize+i)
+      rotate(-180)
+      //ellipse(i/2,i*2, 5*basssize+i, 5*basssize+i)
+      
       ellipse(i/4,i, 3*basssize+i, 3*basssize+i)
       ellipse(i,i/4, 3*basssize+i, 3*basssize+i)
-       ellipse(i/8,i, 3*basssize+i, 3*basssize+i) 
-       ellipse(i,i/8, 3*basssize+i, 3*basssize+i)
+rotate(-135)
+            ellipse(i/4,i, 7*basssize+i, 3*basssize+i)
+      ellipse(i*8,i/4, 7*basssize+i, 3*basssize+i)
+      ellipse(i/4,i, 3*basssize+i, 7*basssize+i)
+      ellipse(i*4,i/4, 3*basssize+i, 7*basssize+i)
+
+       //ellipse(i/8,i, 3*basssize+i, 3*basssize+i) 
+       //ellipse(i,i/8, 3*basssize+i, 3*basssize+i)
       // rotate(i/90) 
       // ellipse(i/4,i, 3*basssize+i, 3*basssize+i) 
       // ellipse(i,i/4, 3*basssize+i, 3*basssize+i)
       // rotate(i/180)
     }
     
-    scale (bass/25)
+    scale (bass/5)
     //ellipse(0,0, bass*1.5, bass*1.5)
  //ellipse(width, height, bass*2, bass*2)
  //ellipse(bass/2, bass/2, bass*3, bass*3)
  pop()
- rotationOffset += rotatespeed/4;
+ rotationOffset += rotatespeed/15;
 
 
  stroke(vocal, drumcolor, 50+drumcolor, bass*3)
@@ -166,3 +184,4 @@ rectMode(CORNER)
   //  textSize(vocal);
   //  text(words, width/2, height/3);
 }
+
