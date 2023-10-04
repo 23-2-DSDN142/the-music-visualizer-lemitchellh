@@ -59,7 +59,7 @@ push()
       //strokeWeight(10/i)
     }
 
-      //ellipse(0,0, 2*bass+i, 2*bass+i)
+      //e llipse(0,0, 2*bass+i, 2*bass+i)
       rotate(-180)
       //ellipse(i,i, 5*basssize+i, 5*basssize+i)
       ellipse(i/4,i, 3*basssize+i, 3*basssize+i)
