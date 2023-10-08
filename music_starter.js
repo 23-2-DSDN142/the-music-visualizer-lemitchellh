@@ -48,10 +48,10 @@ push()
     stroke (20, drumcolor, 100+drumcolor)
     fill(0,0,0,0)
     rotate(rotationOffset)
-    for (let i=0; i<100; i=i+2){
-    if (i>100){
+    for (let i=0; i<100; i=i+3){
+    if (i>110){
       fill(20, 20, 20, 200);
-      ellipse(i,i,3*basssize+i, 3*basssize+i)
+      ellipse(drumshe,drumshe,3*drumshe+i, 3*drumshe+i)
       //strokeWeight(i-basssize)
     }
     else {
@@ -62,18 +62,18 @@ push()
       //e llipse(0,0, 2*bass+i, 2*bass+i)
       rotate(-180)
       //ellipse(i,i, 5*basssize+i, 5*basssize+i)
-      ellipse(i/4,i, 3*basssize+i, 3*basssize+i)
-      ellipse(i,i/4, 3*basssize+i, 3*basssize+i)
+      //ellipse(i/4,i, 3*basssize+i, 3*basssize+i)
+      //ellipse(i,i/4, 3*basssize+i, 3*basssize+i)
       rotate(-180)
       //ellipse(i/2,i*2, 5*basssize+i, 5*basssize+i)
       
-      ellipse(i/4,i, 3*basssize+i, 3*basssize+i)
-      ellipse(i,i/4, 3*basssize+i, 3*basssize+i)
+      //ellipse(i/4,i, 3*basssize+i, 3*basssize+i)
+      //ellipse(i,i/4, 3*basssize+i, 3*basssize+i)
 rotate(-135)
-            ellipse(i/4,i, 7*basssize+i, 3*basssize+i)
-      ellipse(i*8,i/4, 7*basssize+i, 3*basssize+i)
-      ellipse(i/4,i, 3*basssize+i, 7*basssize+i)
-      ellipse(i*4,i/4, 3*basssize+i, 7*basssize+i)
+            //ellipse(i/4,i, 7*basssize+i, 3*basssize+i)
+      ellipse(i*4,i/4, 7*drumshe+i, 3*drumshe+i)
+      ellipse(i/4,i, 3*drumshe+i, 7*drumshe+i)
+      //ellipse(i*4,i/4, 3*basssize+i, 7*basssize+i)
 
        //ellipse(i/8,i, 3*basssize+i, 3*basssize+i) 
        //ellipse(i,i/8, 3*basssize+i, 3*basssize+i)
@@ -83,12 +83,12 @@ rotate(-135)
       // rotate(i/180)
     }
     
-    scale (bass/5)
+    scale (drum/5)
     //ellipse(0,0, bass*1.5, bass*1.5)
  //ellipse(width, height, bass*2, bass*2)
  //ellipse(bass/2, bass/2, bass*3, bass*3)
  pop()
- rotationOffset += rotatespeed/15;
+ rotationOffset += drumshe/20;
 
 
  stroke(vocal, drumcolor, 50+drumcolor, bass*3)
