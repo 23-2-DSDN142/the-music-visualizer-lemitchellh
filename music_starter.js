@@ -11,14 +11,20 @@ function draw_one_frame(words, vocal, drum, bass, other, counter){
   var basscolor = map(bass, 0, 255, 190, 240)
   var drumcolor = map(drum, 0, 255, 150, 240)
 
-  var drumshe = map(drum, 0, 100, 0, 85)  
+  var drumshe = map(drum, 0, 100, 5, 80)  
   var basssize = map(bass, 0, 100, 10, 45)
+  var bassbar = map(bass, 0, 100, 60, 135)
   var rotatespeed= map(bass, 0, 100, 7, 35)
   
   let middlewidth = width/2
   let middleheight = height/2
 
-if (bass>25){
+  let drumcircle = drumshe*1.5
+
+
+
+
+  if (bass>25){
   strokeWeight(15)
   fill(50,110,150,155)
   ellipse(middlewidth,middleheight,basssize*7,basssize*7)
@@ -27,8 +33,8 @@ if (bass>25){
 
 
  if (bass>50){
-   strokeWeight(50)
-   fill(50,110,150,155)
+   strokeWeight(50+basssize)
+   fill(50,150,150,155)
   ellipse(middlewidth*bass,middleheight*bass,basssize*7,basssize*7)
  }
 
@@ -36,7 +42,8 @@ if (bass>25){
   
 
 stroke(100+vocal, drumcolor, 50+drumcolor)
- strokeWeight(bass/100);
+ strokeWeight(basssize/100);
+
 
  
 push()
@@ -49,14 +56,14 @@ push()
     fill(0,0,0,0)
     rotate(rotationOffset)
     for (let i=0; i<100; i=i+3){
-    if (i>110){
-      fill(20, 20, 20, 200);
-      ellipse(drumshe,drumshe,3*drumshe+i, 3*drumshe+i)
+    if (i>100){
+      //fill(20, 20, 20, 200);
+      //ellipse(drumshe*2,drumshe,1*drumshe+i, 1*drumshe+i)
       //strokeWeight(i-basssize)
     }
     else {
-      fill(50,110,i*20, 10);
-      //strokeWeight(10/i)
+      fill(50,drumshe*1.2,drumshe*20, drumshe*.5);
+      strokeWeight(drumshe/30)
     }
 
       //e llipse(0,0, 2*bass+i, 2*bass+i)
@@ -71,8 +78,9 @@ push()
       //ellipse(i,i/4, 3*basssize+i, 3*basssize+i)
 rotate(-135)
             //ellipse(i/4,i, 7*basssize+i, 3*basssize+i)
-      ellipse(i*4,i/4, 7*drumshe+i, 3*drumshe+i)
-      ellipse(i/4,i, 3*drumshe+i, 7*drumshe+i)
+      //ellipse(i*3,i/4, 3*drumshe+i, 3*drumshe+i)
+      ellipse(drumcircle, drumcircle, 1.75*drumshe+i, 1.75*drumshe+i)
+      ellipse(drumcircle+100, drumcircle+100, drumshe-i+10, drumshe-i+10)
       //ellipse(i*4,i/4, 3*basssize+i, 7*basssize+i)
 
        //ellipse(i/8,i, 3*basssize+i, 3*basssize+i) 
@@ -83,105 +91,48 @@ rotate(-135)
       // rotate(i/180)
     }
     
-    scale (drum/5)
+    //scale (drum)
     //ellipse(0,0, bass*1.5, bass*1.5)
  //ellipse(width, height, bass*2, bass*2)
  //ellipse(bass/2, bass/2, bass*3, bass*3)
  pop()
- rotationOffset += drumshe/20;
+ rotationOffset += rotatespeed/20;
 
 
  stroke(vocal, drumcolor, 50+drumcolor, bass*3)
  strokeWeight(6);
 rectMode(CORNER)
 
- //fill(0, 20+drumcolor, 15+drumcolor)
-//  line(middlewidth, middleheight, middlewidth, middleheight-drum*2)
-//  line(middlewidth-20, middleheight, middlewidth - 20, middleheight-drum*1.8)
-//  line(middlewidth+20, middleheight, middlewidth + 20, middleheight-drum*1.8)
-//  line(middlewidth+40, middleheight, middlewidth + 40, middleheight-drum*1.6)
-//  line(middlewidth-40, middleheight, middlewidth - 40, middleheight-drum*1.6)
 
-point (width/2, height/2)
+  //stroke(20,basscolor,10+basscolor)
+  for (let i=0; i<100; i=i+15){
+    if (i>100){
+      fill(50,basssize+50,basssize+120, 2*basssize)
+      rect (middlewidth, middleheight, 80, 30, 10, 10, 10, 10 ) 
+    }
+    else {
+      //noStroke()
+      //stroke(20,basscolor,10+basscolor)
+      //strokeWeight(2)
+  //stroke(20,basscolor,10+basscolor)
+      translate (0,-bass/3)    
+      fill(50,bassbar+50,bassbar+120, 1.5*bassbar)
+      rect (middlewidth-575, middleheight, 80, 30, 10, 10, 10, 10 )
+      rect (middlewidth-425, middleheight, 80, 30, 10, 10, 10, 10 )
+      rect (middlewidth-275, middleheight, 80, 30, 10, 10, 10, 10 )
+      rect (middlewidth-125, middleheight, 80, 30, 10, 10, 10, 10 )
+      rect (middlewidth+25, middleheight, 80, 30, 10, 10, 10, 10 )
+      rect (middlewidth+175, middleheight, 80, 30, 10, 10, 10, 10 )
+      rect (middlewidth+325, middleheight, 80, 30, 10, 10, 10, 10 )
+      rect (middlewidth+475, middleheight, 80, 30, 10, 10, 10, 10 )
+      //rect (middlewidth+625, middleheight, 80, 30, 10, 10, 10, 10 )
+    }
 
-// for (let i=0; i<20; i=i+150){
-//   if (i>250){
-//      fill(i-drumcolor, i-drumcolor, i+drumcolor)
-//      //rect(width/2, height/2, 18, i-drum)
-//      rotate(i*drumshe,i)
-// }
-// rectMode(CORNER);
-// rect(width/2, height/2, 18, i-drum)
-// //rect(middlewidth, middleheight, 18, drumshe-i)
-// }
-
-
-
-rectMode(CORNER)
-//  rect(middlewidth, middleheight, 18, -2.6*drumshe)
-//  rect(middlewidth-35, middleheight, 18, -2.4*drumshe)
-//  rect(middlewidth-70, middleheight, 18, -2.2*drumshe)
-//  rect(middlewidth-105, middleheight, 18, -2.0*drumshe)
-//  rect(middlewidth-140, middleheight, 18, -1.8*drumshe)
-//  rect(middlewidth-175, middleheight, 18, -1.6*drumshe)
-//  rect(middlewidth-210, middleheight, 18, -1.4*drumshe)
-//  rect(middlewidth-245, middleheight, 18, -1.2*drumshe)
-//  rect(middlewidth-280, middleheight, 18, -1.0*drumshe)
-//  rect(middlewidth-315, middleheight, 18, -.8*drumshe)
-//  rect(middlewidth-350, middleheight, 18, -.6*drumshe)
-//  rect(middlewidth-385, middleheight, 18, -.4*drumshe)
-//  rect(middlewidth-420, middleheight, 18, -.2*drumshe)
-//  rect(middlewidth-455, middleheight, 18, -.1*drumshe)
-//  rect(middlewidth+35, middleheight, 18, -2.4*drumshe)
-//  rect(middlewidth+70, middleheight, 18, -2.2*drumshe)
-//  rect(middlewidth+105, middleheight, 18, -2.0*drumshe)
-
-//  rect(middlewidth+140, middleheight, 18, -1.8*drumshe)
-//  rect(middlewidth+175, middleheight, 18, -1.6*drumshe)
-//  rect(middlewidth+210, middleheight, 18, -1.4*drumshe)
-//  rect(middlewidth+245, middleheight, 18, -1.2*drumshe)
-//  rect(middlewidth+280, middleheight, 18, -1.0*drumshe)
-//  rect(middlewidth+315, middleheight, 18, -.8*drumshe)
-//  rect(middlewidth+350, middleheight, 18, -.6*drumshe)
-//  rect(middlewidth+385, middleheight, 18, -.4*drumshe)
-//  rect(middlewidth+420, middleheight, 18, -.2*drumshe)
-//  rect(middlewidth+455, middleheight, 18, -0.1*drumshe)
+noStroke()
+  }
 
 
 
- //  let bar_spacing = height / 10;
-  //  let bar_height = width / 12;
-  //  let bar_pos_x = width / 2;
- 
 
-  //  // vocal bar is red
-  //  fill(200, 0, 0);
-  //  rect(bar_pos_x, height / 2 + 1 * bar_spacing, 4 * vocal, bar_height);
-  //  fill(0);
-  //  text("vocals", bar_pos_x, height / 2 + 1 * bar_spacing + 8);
- 
-  //  // drum bar is green
-  //  fill(0, 200, 0);
-  //  rect(bar_pos_x, height / 2 + 2 * bar_spacing, 4 * drum, bar_height);
-  //  fill(0);
-  //  text("drums", bar_pos_x, height / 2 + 2 * bar_spacing + 8);
- 
-  //  // bass bar is blue
-  //  fill(50, 50, 240);
-  //  rect(bar_pos_x, height / 2 + 3 * bar_spacing, 4 * bass, bar_height);
-  //  fill(0);
-  //  text("bass", bar_pos_x, height / 2 + 3 * bar_spacing + 8);
- 
-  //  // other bar is white
-  //  fill(200, 200, 200);
-  //  rect(bar_pos_x, height / 2 + 4 * bar_spacing, 4 * other, bar_height);
-  //  fill(0);
-  //  text("other", bar_pos_x, height / 2 + 4 * bar_spacing + 8);
-  //  fill(255, 255, 0);
- 
-  //  // display "words"
-  //  textAlign(CENTER);
-  //  textSize(vocal);
-  //  text(words, width/2, height/3);
-}
+ }
 
