@@ -11,9 +11,9 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   var basscolor = map(bass, 0, 255, 190, 240)
   var drumcolor = map(drum, 0, 255, 150, 240)
 
-  var drumshe = map(drum, 0, 100, 5, 40)
+  var drumshe = map(drum, 0, 100, -40, 40)
   var basssize = map(bass, 0, 100, 10, 45)
-  var bassbar = map(bass, 0, 100, 60, 135)
+  var bassbar = map(bass, 0, 100, 60, 95)
   var rotatespeed = map(bass, 0, 100, 7, 35)
 
   let middlewidth = width / 2
@@ -73,27 +73,15 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
     rotate(-180)
     //ellipse(i/2,i*2, 5*basssize+i, 5*basssize+i)
 
-    //ellipse(i/4,i, 3*basssize+i, 3*basssize+i)
-    //ellipse(i,i/4, 3*basssize+i, 3*basssize+i)
     rotate(-135)
-    //ellipse(i/4,i, 7*basssize+i, 3*basssize+i)
-    //ellipse(i*3,i/4, 3*drumshe+i, 3*drumshe+i)
     ellipse(drumcircle, drumcircle, 1.75 * drumshe + i, 1.75 * drumshe + i)
     ellipse(drumcircle + 100, drumcircle + 100, drumshe - i + 10, drumshe - i + 10)
     //ellipse(i*4,i/4, 3*basssize+i, 7*basssize+i)
 
-    //ellipse(i/8,i, 3*basssize+i, 3*basssize+i) 
-    //ellipse(i,i/8, 3*basssize+i, 3*basssize+i)
-    // rotate(i/90) 
-    // ellipse(i/4,i, 3*basssize+i, 3*basssize+i) 
-    // ellipse(i,i/4, 3*basssize+i, 3*basssize+i)
-    // rotate(i/180)
   }
 
   //scale (drum)
-  //ellipse(0,0, bass*1.5, bass*1.5)
-  //ellipse(width, height, bass*2, bass*2)
-  //ellipse(bass/2, bass/2, bass*3, bass*3)
+  
   pop()
   rotationOffset += rotatespeed / 20;
 
@@ -120,7 +108,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
       //strokeWeight(2)
       //stroke(20,basscolor,10+basscolor)
       push();
-      rotate(12.5 * i * (bass / 100))   
+      rotate(12.5 * i * (bass / 50))   
       fill(10, bassbar + 50, bassbar + 120, 50 - bassbar/ 20.55)
       //rect (-175, , 80, 30, 10, 10, 10, 10 )
       //rect (100, , 80, 30, 10, 10, 10, 10 )
@@ -137,7 +125,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
       
        push()
       fill(10, bassbar + 150, bassbar + 120, 50 - bassbar/ 20.55)
-      rotate(-12.5 * i * (bass / 100))
+      rotate(-12.5 * i * (bass / 50))
       rect(-275, 0, 80, 30, 10, 10, 10, 10)
       rect(200, 0, 80, 30, 10, 10, 10, 10)
       pop()
