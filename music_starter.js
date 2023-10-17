@@ -1,12 +1,15 @@
 let rotationOffset = 0;
 
+  
+
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
-  background(0, 10, bass / 4)
   textFont('Comic Sans'); // please use CSS safe fonts
-  rectMode(CENTER)
+createCanvas(windowWidth,windowHeight) 
+background ( 10, 10, bass/4)  
+rectMode(CENTER)
+  angleMode(DEGREES)
   textSize(44);
-
 
   var basscolor = map(bass, 0, 255, 190, 240)
   var drumcolor = map(drum, 0, 255, 150, 240)
@@ -22,25 +25,24 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   let drumcircle = drumshe * 1.5
 
 
+  
+  // if (bass > 25) {
+  //   strokeWeight(15)
+  //   //fill(50, 110, 150, 155)
+  //   ellipse(middlewidth, middleheight, basssize * 7, basssize * 7)
+
+  // }
 
 
-  if (bass > 25) {
-    strokeWeight(15)
-    //fill(50, 110, 150, 155)
-    ellipse(middlewidth, middleheight, basssize * 7, basssize * 7)
-
-  }
-
-
-  if (bass > 50) {
-    strokeWeight(50 + basssize)
-    fill(50, 150, 150, 155)
-    ellipse(middlewidth * bass, middleheight * bass, basssize * 7, basssize * 7)
-  }
-
+  // if (bass > 50) {
+  //   strokeWeight(50 + basssize)
+  //   fill(50, 150, 150, 155)
+  //   ellipse(middlewidth * bass, middleheight * bass, basssize * 7, basssize * 7)
+  // }
 
 
 
+  
   stroke(100 + vocal, drumcolor, 50 + drumcolor)
   strokeWeight(basssize / 100);
 
@@ -89,6 +91,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   //stroke(vocal, drumcolor, 50 + drumcolor, bass * 3)
   strokeWeight(6);
   rectMode(CORNER)
+  angleMode(DEGREES)
 
 
   //stroke(20,basscolor,10+basscolor)
@@ -116,12 +119,15 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
       rect(200, 0, 80, 30, 10, 10, 10, 10)
       rotate(45)
       pop()
-      // push()
-      // rotate(45)
-      // rect(-275, 0, 80, 30, 10, 10, 10, 10)
-      // rect(200, 0, 80, 30, 10, 10, 10, 10)
+//        push()
+// stroke(bassbar, bassbar, bassbar*2)
+//        translate(0,0)
+//        fill(50, bassbar + 100, bassbar + 120, bassbar/5)
+//       rotate(90)
+//       rotate(sin(frameCount + bassbar / i)*100)  
+//       rect(110,110, 200-i, 200 - i , 205)
       
-      // pop()
+//        pop()
       
        push()
       fill(10, bassbar + 150, bassbar + 120, 50 - bassbar/ 20.55)
@@ -141,5 +147,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    pop()
 
 
+    }
 
-}
+
+
