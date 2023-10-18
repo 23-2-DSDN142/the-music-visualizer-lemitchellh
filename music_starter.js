@@ -20,7 +20,7 @@ rectMode(CENTER)
   var bassbar = map(bass, 0, 100, 60, 95)
   var rotatespeed = map(bass, 0, 100, 7, 35)
 
-var vocalcu = map(vocal,0, 100, -5, 15)
+var vocalcu = map(vocal,0, 100, 0, 1)
 
   let middlewidth = width / 2;
   let middleheight = height / 2;
@@ -40,6 +40,10 @@ if(bass<50 && song.currentTime()<25){
   bass =0 
 }
 
+if(vocalcu<0.3){
+  vocalcu=0
+}
+
 // if (song.currentTime()<30){
 //   voice = 0
 // }
@@ -52,31 +56,31 @@ if(bass<50 && song.currentTime()<25){
 
   push()
 
-  translate(80,10)
+  translate(80,50)
 strokeWeight(voice)
 stroke(20,205, 220, voicetrans)
 fill(10, 10, bass/4)
   beginShape()
   curveVertex(xcurve-180,ycurve)
-  curveVertex(xcurve-90,ycurve-vocalcu*8)
+  curveVertex(xcurve-90,ycurve-vocalcu*80)
 curveVertex(xcurve,ycurve)
-curveVertex(xcurve+90,ycurve-vocalcu*11)
+curveVertex(xcurve+90,ycurve-vocalcu*110)
 curveVertex(xcurve+180,ycurve)
-curveVertex(xcurve+270,ycurve-vocalcu*14)
+curveVertex(xcurve+270,ycurve-vocalcu*140)
 curveVertex(xcurve+360,ycurve)
-curveVertex(xcurve+450,ycurve-vocalcu*17)
+curveVertex(xcurve+450,ycurve-vocalcu*170)
 curveVertex(xcurve+540,ycurve)
-curveVertex(xcurve+630,ycurve-vocalcu*20)
+curveVertex(xcurve+630,ycurve-vocalcu*200)
 curveVertex(xcurve+720,ycurve)
-curveVertex(xcurve+810,ycurve-vocalcu*17)
+curveVertex(xcurve+810,ycurve-vocalcu*170)
 curveVertex(xcurve+900,ycurve)
-curveVertex(xcurve+990,ycurve-vocalcu*14)
+curveVertex(xcurve+990,ycurve-vocalcu*140)
 curveVertex(xcurve+1080,ycurve)
-curveVertex(xcurve+1170,ycurve-vocalcu*11)
+curveVertex(xcurve+1170,ycurve-vocalcu*110)
 curveVertex(xcurve+1260,ycurve)
-curveVertex(xcurve+1350,ycurve-vocalcu*8)
+curveVertex(xcurve+1350,ycurve-vocalcu*80)
 curveVertex(xcurve+1440,ycurve)
-curveVertex(xcurve+1530,ycurve-vocalcu*5)
+curveVertex(xcurve+1530,ycurve-vocalcu*50)
 curveVertex(xcurve+1620,ycurve)
 endShape()
 stroke(20,205, 120, voicetrans)
