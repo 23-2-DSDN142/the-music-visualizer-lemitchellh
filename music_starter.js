@@ -20,7 +20,7 @@ rectMode(CENTER)
   var bassbar = map(bass, 0, 100, 60, 95)
   var rotatespeed = map(bass, 0, 100, 7, 35)
 
-var vocalcu = map(vocal,0, 100, 1, 5)
+var vocalcu = map(vocal,0, 100, -5, 15)
 
   let middlewidth = width / 2;
   let middleheight = height / 2;
@@ -30,45 +30,109 @@ var vocalcu = map(vocal,0, 100, 1, 5)
  let xcurve = 0
  let ycurve = height/2
   
-     
-if(bass<50){
+let voice = 7
+let voicetrans = 140
+
+ console.log(song.currentTime())    
+
+
+if(bass<50 && song.currentTime()<25){
   bass =0 
 }
 
-  
-  
-  
+// if (song.currentTime()<30){
+//   voice = 0
+// }
+
+// if (song.currentTime()<30){
+//   vocalcu = 0
+// } 
+
+
+
   push()
-  
-strokeWeight(7)
-stroke(20,205, 220)
+
+  translate(80,10)
+strokeWeight(voice)
+stroke(20,205, 220, voicetrans)
 fill(10, 10, bass/4)
   beginShape()
   curveVertex(xcurve-180,ycurve)
-  curveVertex(xcurve-90,ycurve/vocalcu)
+  curveVertex(xcurve-90,ycurve-vocalcu*8)
 curveVertex(xcurve,ycurve)
-curveVertex(xcurve+90,ycurve/vocalcu)
+curveVertex(xcurve+90,ycurve-vocalcu*11)
 curveVertex(xcurve+180,ycurve)
-curveVertex(xcurve+270,ycurve/vocalcu)
+curveVertex(xcurve+270,ycurve-vocalcu*14)
 curveVertex(xcurve+360,ycurve)
-curveVertex(xcurve+450,ycurve/vocalcu)
+curveVertex(xcurve+450,ycurve-vocalcu*17)
 curveVertex(xcurve+540,ycurve)
-curveVertex(xcurve+630,ycurve/vocalcu)
+curveVertex(xcurve+630,ycurve-vocalcu*20)
 curveVertex(xcurve+720,ycurve)
-curveVertex(xcurve+810,ycurve/vocalcu)
+curveVertex(xcurve+810,ycurve-vocalcu*17)
 curveVertex(xcurve+900,ycurve)
-curveVertex(xcurve+990,ycurve/vocalcu)
+curveVertex(xcurve+990,ycurve-vocalcu*14)
 curveVertex(xcurve+1080,ycurve)
-curveVertex(xcurve+1170,ycurve/vocalcu)
+curveVertex(xcurve+1170,ycurve-vocalcu*11)
 curveVertex(xcurve+1260,ycurve)
-curveVertex(xcurve+1350,ycurve/vocalcu)
+curveVertex(xcurve+1350,ycurve-vocalcu*8)
 curveVertex(xcurve+1440,ycurve)
-curveVertex(xcurve+1530,ycurve/vocalcu)
+curveVertex(xcurve+1530,ycurve-vocalcu*5)
 curveVertex(xcurve+1620,ycurve)
 endShape()
+stroke(20,205, 120, voicetrans)
+noFill()
+beginShape()
+curveVertex(xcurve-240,ycurve-vocalcu*4)
+  curveVertex(xcurve-150,ycurve)
+  curveVertex(xcurve-60,ycurve-vocalcu*7)
+curveVertex(xcurve+30,ycurve)
+curveVertex(xcurve+120,ycurve-vocalcu*10)
+curveVertex(xcurve+210,ycurve)
+curveVertex(xcurve+300,ycurve-vocalcu*13)
+curveVertex(xcurve+390,ycurve)
+curveVertex(xcurve+480,ycurve-vocalcu*16)
+curveVertex(xcurve+570,ycurve)
+curveVertex(xcurve+660,ycurve-vocalcu*19)
+curveVertex(xcurve+750,ycurve)
+curveVertex(xcurve+840,ycurve-vocalcu*16)
+curveVertex(xcurve+930,ycurve)
+curveVertex(xcurve+1020,ycurve-vocalcu*13)
+curveVertex(xcurve+1110,ycurve)
+curveVertex(xcurve+1200,ycurve-vocalcu*10)
+curveVertex(xcurve+1290,ycurve)
+curveVertex(xcurve+1380,ycurve-vocalcu*7)
+curveVertex(xcurve+1470,ycurve)
+curveVertex(xcurve+1560,ycurve-vocalcu*4)
+curveVertex(xcurve+1650,ycurve)
+endShape()    
+stroke(20,105, 180, voicetrans)
+beginShape()
+  curveVertex(xcurve-270,ycurve)
+  curveVertex(xcurve-180,ycurve-vocalcu*11)
+curveVertex(xcurve-90,ycurve)
+curveVertex(xcurve,ycurve-vocalcu*14)
+curveVertex(xcurve+90,ycurve)
+curveVertex(xcurve+180,ycurve-vocalcu*15)
+curveVertex(xcurve+270,ycurve)
+curveVertex(xcurve+360,ycurve-vocalcu*18)
+curveVertex(xcurve+450,ycurve)
+curveVertex(xcurve+540,ycurve-vocalcu*21)
+curveVertex(xcurve+630,ycurve)
+curveVertex(xcurve+720,ycurve-vocalcu*18)
+curveVertex(xcurve+810,ycurve)
+curveVertex(xcurve+900,ycurve-vocalcu*15)
+curveVertex(xcurve+990,ycurve)
+curveVertex(xcurve+1080,ycurve-vocalcu*12)
+curveVertex(xcurve+1170,ycurve)
+curveVertex(xcurve+1260,ycurve-vocalcu*9)
+curveVertex(xcurve+1350,ycurve)
+curveVertex(xcurve+1440,ycurve-vocalcu*6)
+curveVertex(xcurve+1530,ycurve)
+curveVertex(xcurve+1620,ycurve-vocalcu*3)
+
+endShape()  
 
 pop()
-
 
   push()
   translate(width / 2, height / 2);
@@ -151,7 +215,6 @@ pop()
   }
    pop()
 rotate(90)
-
 
 }  
 
