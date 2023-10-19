@@ -37,8 +37,13 @@ let bassposx = 0;
 let bassposy = 0;
 let basstwirl = map(bass, 0, 100, 1, 50)
 
- console.log(song.currentTime())    
+let othershape = map(other,0, 100, 1, 5)
+let othershapeposy = -350
+let othersize = map(song.currentTime(),0, song.duration(), 0, 100)
+let othercolour = 30
 
+ console.log(song.currentTime())    
+ //console.log(song.duration())
 
 if(bass<40 && song.currentTime()<25){
   bass =0 
@@ -204,16 +209,26 @@ pop()
       rotate(45)
       pop()
        push()
-stroke(other, other, other*2)
-strokeWeight(other/vocal)       
-translate(-450,-50)
-       fill(50, bassbar + 100, bassbar + 120, bassbar/5)
-      //rotate(90/other)
-      rotate(sin(other + other / i)*1000)  
-      rect(10,10, other+i*2, other + i*2 , other)
-      
+
+       stroke(other, other, other*2)
+strokeWeight(othershape/2)       
+translate(-450,othershapeposy + counter/50)
+       fill(othercolour , othercolour + 100, othercolour + 150, othercolour/2)
+      rotate(othershape*10)
+      //rotate(sin(other + other / i)*100)  
+      rect(10,10, othershape + i*2, othershape + i*2 , othershape)
        pop()
-      
+       push()
+       translate(-200,othershapeposy + counter/50)      
+    stroke(other, other, other*2)
+    strokeWeight(othershape/2)
+    fill(othercolour , othercolour + 100, othercolour + 150, othercolour/2)
+    rotate(othershape*-10)     
+    rect(10,10, othershape + i*2, othershape + i*2 , othershape)
+    pop()
+
+       
+
        push()
       fill(10, bassbar + 150, bassbar + 120, 50 - bassbar/ 20.55)
       rotate(-12.5 * i * (bass / 50))
