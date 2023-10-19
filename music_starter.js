@@ -33,15 +33,24 @@ var vocalcu = map(vocal,0, 100, 0, 1)
 let voice = 7
 let voicetrans = 140
 
+let bassposx = 0;
+let bassposy = 0;
+let basstwirl = map(bass, 0, 100, 1, 50)
+
  console.log(song.currentTime())    
 
 
-if(bass<50 && song.currentTime()<25){
+if(bass<40 && song.currentTime()<25){
   bass =0 
 }
 
 if(vocalcu<0.3){
   vocalcu=0
+}
+
+if (bass>79){
+  bassposx = bassposx + basstwirl
+  bassposy = bassposy + basstwirl
 }
 
 // if (song.currentTime()<30){
@@ -52,7 +61,9 @@ if(vocalcu<0.3){
 //   vocalcu = 0
 // } 
 
-
+//if (song.currentTime()<130){
+//   
+// } 
 
   push()
 
@@ -86,53 +97,53 @@ endShape()
 stroke(20,205, 120, voicetrans)
 noFill()
 beginShape()
-curveVertex(xcurve-240,ycurve-vocalcu*4)
+curveVertex(xcurve-240,ycurve-vocalcu*40)
   curveVertex(xcurve-150,ycurve)
-  curveVertex(xcurve-60,ycurve-vocalcu*7)
+  curveVertex(xcurve-60,ycurve-vocalcu*70)
 curveVertex(xcurve+30,ycurve)
-curveVertex(xcurve+120,ycurve-vocalcu*10)
+curveVertex(xcurve+120,ycurve-vocalcu*100)
 curveVertex(xcurve+210,ycurve)
-curveVertex(xcurve+300,ycurve-vocalcu*13)
+curveVertex(xcurve+300,ycurve-vocalcu*130)
 curveVertex(xcurve+390,ycurve)
-curveVertex(xcurve+480,ycurve-vocalcu*16)
+curveVertex(xcurve+480,ycurve-vocalcu*160)
 curveVertex(xcurve+570,ycurve)
-curveVertex(xcurve+660,ycurve-vocalcu*19)
+curveVertex(xcurve+660,ycurve-vocalcu*190)
 curveVertex(xcurve+750,ycurve)
-curveVertex(xcurve+840,ycurve-vocalcu*16)
+curveVertex(xcurve+840,ycurve-vocalcu*160)
 curveVertex(xcurve+930,ycurve)
-curveVertex(xcurve+1020,ycurve-vocalcu*13)
+curveVertex(xcurve+1020,ycurve-vocalcu*130)
 curveVertex(xcurve+1110,ycurve)
-curveVertex(xcurve+1200,ycurve-vocalcu*10)
+curveVertex(xcurve+1200,ycurve-vocalcu*100)
 curveVertex(xcurve+1290,ycurve)
-curveVertex(xcurve+1380,ycurve-vocalcu*7)
+curveVertex(xcurve+1380,ycurve-vocalcu*70)
 curveVertex(xcurve+1470,ycurve)
-curveVertex(xcurve+1560,ycurve-vocalcu*4)
+curveVertex(xcurve+1560,ycurve-vocalcu*40)
 curveVertex(xcurve+1650,ycurve)
 endShape()    
 stroke(20,105, 180, voicetrans)
 beginShape()
   curveVertex(xcurve-270,ycurve)
-  curveVertex(xcurve-180,ycurve-vocalcu*11)
+  curveVertex(xcurve-180,ycurve-vocalcu*110)
 curveVertex(xcurve-90,ycurve)
-curveVertex(xcurve,ycurve-vocalcu*14)
+curveVertex(xcurve,ycurve-vocalcu*140)
 curveVertex(xcurve+90,ycurve)
-curveVertex(xcurve+180,ycurve-vocalcu*15)
+curveVertex(xcurve+180,ycurve-vocalcu*150)
 curveVertex(xcurve+270,ycurve)
-curveVertex(xcurve+360,ycurve-vocalcu*18)
+curveVertex(xcurve+360,ycurve-vocalcu*180)
 curveVertex(xcurve+450,ycurve)
-curveVertex(xcurve+540,ycurve-vocalcu*21)
+curveVertex(xcurve+540,ycurve-vocalcu*210)
 curveVertex(xcurve+630,ycurve)
-curveVertex(xcurve+720,ycurve-vocalcu*18)
+curveVertex(xcurve+720,ycurve-vocalcu*180)
 curveVertex(xcurve+810,ycurve)
-curveVertex(xcurve+900,ycurve-vocalcu*15)
+curveVertex(xcurve+900,ycurve-vocalcu*150)
 curveVertex(xcurve+990,ycurve)
-curveVertex(xcurve+1080,ycurve-vocalcu*12)
+curveVertex(xcurve+1080,ycurve-vocalcu*120)
 curveVertex(xcurve+1170,ycurve)
-curveVertex(xcurve+1260,ycurve-vocalcu*9)
+curveVertex(xcurve+1260,ycurve-vocalcu*90)
 curveVertex(xcurve+1350,ycurve)
-curveVertex(xcurve+1440,ycurve-vocalcu*6)
+curveVertex(xcurve+1440,ycurve-vocalcu*60)
 curveVertex(xcurve+1530,ycurve)
-curveVertex(xcurve+1620,ycurve-vocalcu*3)
+curveVertex(xcurve+1620,ycurve-vocalcu*30)
 
 endShape()  
 
@@ -188,25 +199,26 @@ pop()
       push();
       rotate(12.5 * i * (bass / 50))   
       fill(10, bassbar + 50, bassbar + 120, 50 - bassbar/ 20.55)
-      rect(-275, 0, 80, 30, 10, 10, 10, 10)
-      rect(200, 0, 80, 30, 10, 10, 10, 10)
+      rect(-275, bassposy, 80, 30, 10, 10, 10, 10)
+      rect(200, bassposy, 80, 30, 10, 10, 10, 10)
       rotate(45)
       pop()
-//        push()
-// stroke(bassbar, bassbar, bassbar*2)
-//        translate(0,0)
-//        fill(50, bassbar + 100, bassbar + 120, bassbar/5)
-//       rotate(90)
-//       rotate(sin(frameCount + bassbar / i)*100)  
-//       rect(110,110, 200-i, 200 - i , 205)
+       push()
+stroke(other, other, other*2)
+strokeWeight(other/vocal)       
+translate(-450,-50)
+       fill(50, bassbar + 100, bassbar + 120, bassbar/5)
+      //rotate(90/other)
+      rotate(sin(other + other / i)*1000)  
+      rect(10,10, other+i*2, other + i*2 , other)
       
-//        pop()
+       pop()
       
        push()
       fill(10, bassbar + 150, bassbar + 120, 50 - bassbar/ 20.55)
       rotate(-12.5 * i * (bass / 50))
-      rect(-275, 0, 80, 30, 10, 10, 10, 10)
-      rect(200, 0, 80, 30, 10, 10, 10, 10)
+      rect(-275, bassposy, 80, 30, 10, 10, 10, 10)
+      rect(200, bassposy, 80, 30, 10, 10, 10, 10)
       pop()
       
       //rotate(90)
