@@ -1,5 +1,8 @@
 let rotationOffset = 0;
 
+let backb = 20
+let backr = 10
+let backg =10
 
 
 
@@ -7,7 +10,7 @@ let rotationOffset = 0;
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
   textFont('Comic Sans'); // please use CSS safe fonts
 createCanvas(windowWidth,windowHeight) 
-background (10, 10, bass/4)  
+background (backr, backg, backb)  
 rectMode(CENTER)
   angleMode(DEGREES)
   textSize(44);
@@ -33,6 +36,8 @@ var vocalcu = map(vocal,0, 100, 0, 1)
 let voice = 7
 let voicetrans = 140
 
+
+
 let bassposx = 0;
 let bassposy = 0;
 let basstwirl = map(bass, 0, 100, 1, 50)
@@ -40,7 +45,13 @@ let basstwirl = map(bass, 0, 100, 1, 50)
 let othershape = map(other,0, 100, 1, 5)
 let othershapeposy = -350
 let othersize = map(song.currentTime(),0, song.duration(), 0, 100)
-let othercolour = 30
+let othercolour = 50
+let othercolourr = 30
+let othertrans = 30
+let r = 20
+let g = 205
+let b = 220
+
 
  console.log(song.currentTime())    
  //console.log(song.duration())
@@ -49,9 +60,76 @@ if(bass<40 && song.currentTime()<25){
   bass =0 
 }
 
+if(other>40){
+  other= other / 5
+}
+
 if(vocalcu<0.3){
   vocalcu=0
 }
+
+if (song.currentTime()>30){
+  othercolour = 200
+  drumcolor = map(drum, 0, 255, 80, 100)
+  basscolor = map(bass, 0, 255, 100, 140)
+  bassbar = map(bass, 0, 100, 30, 105)
+  g= 150
+  b= 180
+  backb = 50
+  backg = 150
+  backr = 230
+}
+
+if (song.currentTime()>31){
+  backb = 30
+  backg = 10
+  backr = 10
+
+}
+
+if (song.currentTime()>76){
+  othercolour = 200
+  othercolourr = 200
+  basscolor = map(bass, 0, 255, 190, 240)
+  drumcolor = map(drum, 0, 255, 150, 240)
+  drumshe = map(drum, 0, 100, -40, 40)
+  backb = 5
+  backr = 5
+  backg = 5
+  g=235
+  b=255
+  r=235
+}
+
+
+if (song.currentTime()>76){
+}
+
+if (song.currentTime()>94){
+  backb = 30
+  backg = 10
+  backr = 10
+  r=20
+  g=210
+  b=230
+  othercolour = 140
+  othercolourr = 200
+}
+
+if (song.currentTime()>119){
+}
+if (song.currentTime()>143){
+}
+
+if (song.currentTime()>163){
+}
+
+if (song.currentTime()>211){
+}
+
+if (song.currentTime()>230){
+}
+
 
 if (bass>79){
   bassposx = bassposx + basstwirl
@@ -74,8 +152,8 @@ if (bass>79){
 
   translate(80,50)
 strokeWeight(voice)
-stroke(20,205, 220, voicetrans)
-fill(10, 10, bass/4)
+stroke(r,g, b, voicetrans)
+fill(backr, backg, backb, 0)
   beginShape()
   curveVertex(xcurve-180,ycurve)
   curveVertex(xcurve-90,ycurve-vocalcu*80)
@@ -99,8 +177,8 @@ curveVertex(xcurve+1440,ycurve)
 curveVertex(xcurve+1530,ycurve-vocalcu*50)
 curveVertex(xcurve+1620,ycurve)
 endShape()
-stroke(20,205, 120, voicetrans)
-noFill()
+stroke(r,g, b-100, voicetrans)
+fill(backr, backg, backb, 0)
 beginShape()
 curveVertex(xcurve-240,ycurve-vocalcu*40)
   curveVertex(xcurve-150,ycurve)
@@ -125,7 +203,8 @@ curveVertex(xcurve+1470,ycurve)
 curveVertex(xcurve+1560,ycurve-vocalcu*40)
 curveVertex(xcurve+1650,ycurve)
 endShape()    
-stroke(20,105, 180, voicetrans)
+
+stroke(r,g-100, b-40, voicetrans)
 beginShape()
   curveVertex(xcurve-270,ycurve)
   curveVertex(xcurve-180,ycurve-vocalcu*110)
@@ -158,7 +237,7 @@ pop()
   translate(width / 2, height / 2);
 
 
-  stroke(20, drumcolor, 100 + drumcolor)
+  stroke(r, g, b+20)
   fill(0, 0, 0, 0)
   rotate(rotationOffset)
   for (let i = 0; i < 100; i = i + 3) {
@@ -167,7 +246,7 @@ pop()
       ellipse(drumshe*2,drumshe,1*drumshe+i, 1*drumshe+i)
       strokeWeight(i-basssize)
     } else {
-      fill(50, drumshe * 1.2, drumshe * 20, drumshe * .5);
+      fill(50, g, b, drumshe * .5);
       
     }
 
@@ -211,22 +290,69 @@ pop()
        push()
 
        stroke(other, other, other*2)
-strokeWeight(othershape/2)       
-translate(-450,othershapeposy + counter/50)
-       fill(othercolour , othercolour + 100, othercolour + 150, othercolour/2)
+strokeWeight(othershape/3.5)       
+translate(-450,othershapeposy + 25 + counter/25)
+       fill(othercolourr , othercolour + 100, othercolour + 150, othertrans*1.1)
       rotate(othershape*10)
-      //rotate(sin(other + other / i)*100)  
       rect(10,10, othershape + i*2, othershape + i*2 , othershape)
        pop()
        push()
-       translate(-200,othershapeposy + counter/50)      
+       translate(-300,othershapeposy+ 50 + counter/25)      
     stroke(other, other, other*2)
-    strokeWeight(othershape/2)
-    fill(othercolour , othercolour + 100, othercolour + 150, othercolour/2)
+    strokeWeight(othershape/3.5)
+    fill(othercolourr , othercolour + 100, othercolour + 150, othertrans*1.1)
     rotate(othershape*-10)     
     rect(10,10, othershape + i*2, othershape + i*2 , othershape)
     pop()
+    push()
+    translate(-600,othershapeposy+ 75 + counter/25)      
+ stroke(other, other, other*2)
+ strokeWeight(othershape/3.5)
+ fill(othercolourr , othercolour + 100, othercolour + 150, othertrans*1.1)
+ rotate(othershape*-10)     
+ rect(10,10, othershape + i*2, othershape + i*2 , othershape)
+ pop()
+ push()
+ translate(-750,othershapeposy+ 100 + counter/25)      
+stroke(other, other, other*2)
+strokeWeight(othershape/3.5)
+fill(othercolourr , othercolour + 100, othercolour + 150, othertrans*1.1)
+rotate(othershape*-10)     
+rect(10,10, othershape + i*2, othershape + i*2 , othershape)
+pop()
+push()
 
+       stroke(other, other, other*2)
+strokeWeight(othershape/3.5)       
+translate(-450,othershapeposy + 660 - counter/25)
+       fill(othercolourr , othercolour + 100, othercolour + 150, othertrans*1.1)
+      rotate(othershape*10)
+      rect(10,10, othershape + i*2, othershape + i*2 , othershape)
+       pop()
+       push()
+       translate(-300,othershapeposy+ 630 - counter/25)      
+    stroke(other, other, other*2)
+    strokeWeight(othershape/3.5)
+    fill(othercolourr , othercolour + 100, othercolour + 150, othertrans*1.1)
+    rotate(othershape*-10)     
+    rect(10,10, othershape + i*2, othershape + i*2 , othershape)
+    pop()
+    push()
+    translate(-600,othershapeposy+ 615 - counter/25)      
+ stroke(other, other, other*2)
+ strokeWeight(othershape/3.5)
+ fill(othercolourr , othercolour + 100, othercolour + 150, othertrans*1.1)
+ rotate(othershape*-10)     
+ rect(10,10, othershape + i*2, othershape + i*2 , othershape)
+ pop()
+ push()
+ translate(-750,othershapeposy+ 590 - counter/25)      
+stroke(other, other, other*2)
+strokeWeight(othershape/3.5)
+fill(othercolourr , othercolour + 100, othercolour + 150, othertrans*1.1)
+rotate(othershape*-10)     
+rect(10,10, othershape + i*2, othershape + i*2 , othershape)
+pop()
        
 
        push()
